@@ -1,0 +1,67 @@
+<!DOCTYPE HTML>
+
+<!-- 
+	To Do list:
+
+	1.) Adjust the post-it model to randomly generate positions within a range (overlap doesn't matter).
+    2.) Make size of post-its slightly smaller
+    3.) Make sure colors of PostIt are acceptable, specify range? (Optional) 
+    4.) Password protected rejections -- using Open ID verifications (Advanced Optional)
+	
+-->
+
+<html>
+	<head>
+		<title>
+			The Rejection Wall 
+		</title>
+		
+        <!-- Loading the static files (CSS, images, JS etc) -->
+        {% load staticfiles %}
+
+		<link rel="stylesheet" type="text/css" href="{% static 'post_it_gen/style.css' %}" />
+		<!-- Google Fonts -->
+		<link href='http://fonts.googleapis.com/css?family=Indie+Flower' rel='stylesheet' type='text/css'>
+		<link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+		<!-- Loading jQuery -->
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"> </script>
+        <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.0/jquery-ui.min.js"></script>
+		<script type="text/javascript" src="{% static 'post_it_gen/script.js' %}"> </script>
+		<!-- Put Favicon icon here.-->
+		
+	</head>
+	
+	<body>
+		<h1>The Rejection Wall</h1>
+		<h2>Been rejected? Pin it.</h2>
+		<!-- We've defined a view to take care of the form, we can re-direct back to the home page after taking in the info -->
+		<form id="text_input_form" action="{% url 'post_it_gen:submit' %}" method="post">
+            <!-- To prevent cross-site request forgery we use the tag provided by Django. -->
+            {% csrf_token %} 
+			<input type="text" name="text_input_bar" placeholder="I was rejected by" id="text_input_bar">
+			<input type="submit" name="submit_button" value="Pin it" id="submit_button_in_form">
+		</form>
+
+        <!-- Creating some space between form input and the post-its -->
+        <div>
+            <p></p>
+            <p></p>
+            <p></p>
+        </div>		
+
+        <!-- Now making post-its from our stored data. -->
+      
+            <!-- The context we passed the bundle had all the post-its!-->
+            <!-- Trying to put a wrapper to get post-its to display. -->
+            <ul class="wrapper">
+            {% for post_it in all_rejections %}
+                <li class="post-it-note" style="background-color:{{post_it.color}};">
+                    <div class="pin"></div>
+                    <p>{{post_it.content}}</p>
+                </li>
+            {% endfor %}
+            </ul>
+
+	</body>
+	
+</html>
