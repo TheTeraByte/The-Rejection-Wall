@@ -1,13 +1,12 @@
-/** CSS Changes to make:
- * 	1.) Change pixels to ems
- *  
+/** 
+ *  This is the CSS file that makes the app look (passably) good.
+ *  @author Tushar Bhargava
  */
 	
 body
 {
 	/** Background image from Flickr, under CC 2.0 */
 	background-image:url('images/corkboard.jpg');
-    /* Allowing the background image to repeat, as the post-its might take up considerable space. */
 }
 
 h1
@@ -60,7 +59,7 @@ li
 }
 
 
-/* The small 'pin' that holds post-its in place. Borrowed from a Mozilla Webmaker project (along with the post-it). */
+/* The small 'pin' that holds post-its in place. Adapted from a Mozilla Webmaker project (along with the post-it). */
 .pin
 {
      width:20px;

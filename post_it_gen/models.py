@@ -1,7 +1,8 @@
 from django.db import models
 import random
 
-# Create your models here.
+# This stores my data model for the project, namely a 'PostIt' class that has color (randomized) and text content.
+# @author Tushar Bhargava
 
 # Almost like a constructor for the model
 class PostItManager(models.Manager):

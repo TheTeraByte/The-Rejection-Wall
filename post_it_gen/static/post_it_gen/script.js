@@ -1,5 +1,7 @@
+// This project uses jQuery, only to allow the post-its to be draggable.
+// @author Tushar Bhargava
+
 $(document).ready(function(){
-	// Making the post-its draggable, allowing the user to re-adjust them
     $(".post-it-note").draggable();
 });
 
